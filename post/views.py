@@ -51,9 +51,12 @@ def createPost(request):
 def createComment(request, post_id):
     context = {}
     form = CommentModelForm(request.POST)
+    context['post_id'] = post_id
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
+            comment = form.save()
+            comment.post = Post.objects.get(id=post_id)
+            comment.save()
             return redirect('post:details', post_id)
         else:
             context['form'] = form
