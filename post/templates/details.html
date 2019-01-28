@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    this is the detail page
+{% endblock %}
+
+{% block body %}
+    <a href="updatepost">Update Post</a> <br>
+    <a href="createcomment">Comment Post</a> <br>
+    Content: {{ posts.content }} <br>
+    Date Created: {{ posts.date_created }} <br>
+    {% comment %} Date Updated: {{ posts.date_updated }} <br> {% endcomment %}
+    Is Active: {{ posts.is_active }}
+    <br>
+    <br>
+    Comments: <br>
+    <ol>
+    {% for comment in posts.comments.all %}
+        <li> {{ comment.content }} | Date created: {{ comment.date_created }} </li>
+    {% endfor %}
+    </ol>
+{% endblock %}
