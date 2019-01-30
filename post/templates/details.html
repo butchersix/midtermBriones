@@ -15,7 +15,7 @@
     <br>
     Comments: <br>
     <ol>
-    {% for comment in posts.comments.all %}
+    {% for comment in posts.comments.all reversed %}
         <li> {{ comment.content }} | Date created: {{ comment.date_created }} </li>
     {% endfor %}
     </ol>

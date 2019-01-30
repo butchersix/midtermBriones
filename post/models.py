@@ -6,7 +6,7 @@ from django.utils import timezone
 class Post(models.Model):
     title = models.CharField(max_length=100)
     date_created = models.DateTimeField('date created', auto_now_add=True)
-    date_updated = models.DateTimeField('date updated', auto_now_add=True)
+    date_updated = models.DateTimeField('date updated', auto_now=True)
     content = models.TextField()
     is_active = models.BooleanField(default=True)
 

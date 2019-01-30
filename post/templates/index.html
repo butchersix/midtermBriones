@@ -2,13 +2,15 @@
 {% block head %}
     this is the index page
 {% endblock %}
-{% block body%}
+{% block body %}
 <a href="{% url 'post:createpost' %}">Create a new post</a>
 <ol>
     {% for post in posts %}
-        <li>
-            <a href="{% url 'post:detail' post.id %}">Post: {{ post.content }}</a> <br />
-        </li>
+        {% if post.is_active == True %}
+            <li>
+                <a href="{% url 'post:details' post.id %}">Post: {{ post.content }}</a> <br />
+            </li>
+        {% endif %}
     {% endfor %}
 </ol>
 {% endblock %}

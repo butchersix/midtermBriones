@@ -7,7 +7,7 @@ from .forms import PostModelForm, CommentModelForm
 def index(request):
     # return HttpResponse('Hello World!')
     context = {}
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-date_created')
     context['posts'] = posts
     return render(request, 'index.html', context)
 
